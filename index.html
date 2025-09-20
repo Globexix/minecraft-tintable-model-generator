@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Tintable Model Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <main class="main-content">
+        <div class="panel preview-panel" id="dropZone">
+            <h3 class="panel-header">Generator</h3>
+            <div class="upload-area">
+                <input type="file" id="fileInput" accept="image/png, image/jpeg">
+                <div class="file-upload-display">
+                    <button id="chooseFileBtn">Choose File</button>
+                    <span id="fileName"></span>
+                </div>
+                <small style="color: var(--text-color-secondary); margin-top: 10px; display: inline-block;">
+                    Or Drag & Drop Texture Here (up to 128x128)
+                </small>
+            </div>
+            <div class="canvas-previews">
+                <div>
+                    <canvas id="originalCanvas"></canvas>
+                    <div>Original</div>
+                </div>
+                <div>
+                    <canvas id="patternCanvas"></canvas>
+                    <div>Pattern</div>
+                    <button id="downloadPatternBtn" style="display: none;">Download</button>
+                </div>
+                <div>
+                    <canvas id="colorMapCanvas"></canvas>
+                    <div>Color Groups</div>
+                </div>
+            </div>
+            <div class="settings-panel">
+                <div class="control-group full-width">
+                   <label for="tolerance">Color Tolerance</label>
+                   <div class="slider-container">
+                       <input type="range" id="tolerance" min="0" max="100" value="0">
+                       <output class="slider-tooltip" for="tolerance">0</output>
+                   </div>
+                </div>
+                <div class="control-group">
+                    <label for="displaySettings">Display Settings</label>
+                    <button id="displaySettingsBtn" class="settings-btn">Configure...</button>
+                </div>
+                <div class="control-group">
+                    <label for="modelName">Generated Model Name</label>
+                    <input type="text" id="modelName" value="custom_item">
+                </div>
+                <div class="control-group">
+                    <label for="caseString">Case String</label>
+                    <input type="text" id="caseString" value="custom">
+                </div>
+                <div class="control-group">
+                    <label for="fallbackModel">Fallback Model Path</label>
+                    <input type="text" id="fallbackModel" value="item/iron_sword">
+                </div>
+            </div>
+            <h3 class="panel-header">Detected Color Groups</h3>
+            <div class="color-list" id="colorList"></div>
+            
+            <h3 class="panel-header" style="margin-top: 20px;">Original Colors NBT</h3>
+            <div class="nbt-output" id="nbtOutput">[I;]</div>
+
+        </div>
+        <div class="panel output-panel">
+            <div class="output-group">
+                <h3 class="panel-header">
+                    <span>Generated Model JSON</span>
+                    <div class="action-buttons">
+                        <button onclick="copyToClipboard('jsonOutput', this)">Copy</button>
+                        <button onclick="downloadJSON('jsonOutput', 'model')">Download</button>
+                        <button onclick="downloadResourcePack()">Download Resource Pack</button>
+                    </div>
+                </h3>
+                <div class="json-output" id="jsonOutput">Upload a texture to begin...</div>
+            </div>
+            <div class="output-group">
+                <h3 class="panel-header">
+                    <span>Item Override JSON</span>
+                    <div class="action-buttons">
+                        <button onclick="copyToClipboard('itemsModelOutput', this)">Copy</button>
+                        <button onclick="downloadJSON('itemsModelOutput', 'override')">Download</button>
+                    </div>
+                </h3>
+                <div class="json-output" id="itemsModelOutput">...</div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-backdrop" id="displaySettingsModal">
+        <div class="modal">
+            <div class="modal-header">Configure Display Settings</div>
+            <div class="modal-body">
+                <div class="modal-tabs" id="modalTabs"></div>
+                <div id="modalTabContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveDisplaySettingsBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
