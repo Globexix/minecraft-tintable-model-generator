@@ -3,7 +3,7 @@
 
 Automatically generate tintable Minecraft item models from any texture.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https:/globexix.github.io/minecraft-tintable-model-generator/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://globexix.github.io/minecraft-tintable-model-generator/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.4--1.21.9-blue.svg)](https://minecraft.net/)
 </div>
@@ -20,7 +20,7 @@ Upload a texture -> get ready-to-use tintable item model. No manual Blockbench w
 
 ## Usage
 
-1. [Open the tool](https:/globexix.github.io/minecraft-tintable-model-generator/)
+1. [Open the tool](https://globexix.github.io/minecraft-tintable-model-generator/)
 2. Upload your texture (16x16 to 128x128)
 3. Adjust color tolerance if needed
 4. Download files and add to your resource pack, or download generated resourcepack
