@@ -38,6 +38,7 @@ html, body {
 
 .preview-panel {
     border-right: 1px solid var(--border-color);
+    overflow-y: auto;
 }
 
 .panel-header {
